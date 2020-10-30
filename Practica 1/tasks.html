@@ -31,41 +31,39 @@
         </div>
     </header>
     <div class="body">
-        <div class="lista">
-            <span class="pendientes">
-                Preparar practica AW <span class="tag">AW</span> <span class="tag">Practica</span> <button
-                    class="marcar">Marcar finalizada</button>
-            </span>
-            <span class="completadas">
-                Mirar fechas congreso
-            </span>
-            <span class="pendientes">
-                Ir al supermercado <span class="tag">Personal</span> <button class="marcar">Marcar finalizada</button>
-            </span>
-            <span class="pendientes">
-                Mudanza <span class="tag">Personal</span> <button class="marcar">Marcar finalizada</button>
-            </span>
-            <span class="pendientes">
-                Preparar practica AW <span class="tag">AW</span> <span class="tag">Practica</span> <button
-                    class="marcar">Marcar finalizada</button>
-            </span>
-            <span class="completadas">
-                Mirar fechas congreso
-            </span>
-            <span class="pendientes">
-                Ir al supermercado <span class="tag">Personal</span> <button class="marcar">Marcar finalizada</button>
-            </span>
-            <span class="pendientes">
-                Mudanza <span class="tag">Personal</span> <button class="marcar">Marcar finalizada</button>
-            </span> <span class="pendientes">
-                Preparar practica AW <span class="tag">AW</span> <span class="tag">Practica</span> <button
-                    class="marcar">Marcar finalizada</button>
-            </span>
-        </div>
+
+        <ul class="lista">
+            <li class="pendientes">
+                <span class="texto_pendiente">
+                    Preparar practica AW 
+                </span>
+                <span class="tag">AW</span> <span class="tag">Practica</span> 
+                <button class="marcar">Marcar finalizada</button>
+            </li>
+            <li class="completadas">
+                <span >
+                    Mirar fechas congreso
+                </span>
+            </li>
+            <li class="pendientes">
+                <span class="texto_pendiente">
+                    Ir al supermercado 
+                </span>
+                <span class="tag">Personal</span> <button class="marcar">Marcar finalizada</button>
+            </li>
+            <li class="pendientes">
+                <span class="texto_pendiente">
+                    Mudanza 
+                </span>
+                <span class="tag">Personal</span> <button class="marcar">Marcar finalizada</button>
+            </li>
+        </ul>
+
         <div class="buscador">
             <input class="textfield" type="text" name="" id="1" placeholder="Añadir nueva tarea">
             <input class= "add" type="submit" value="Añadir"> <!--Es diferente de un boton-->
         </div>
+
         <button class="eliminar">
             Eliminar tareas completadas
         </button>

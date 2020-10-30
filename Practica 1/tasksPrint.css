@@ -1,6 +1,53 @@
+*{
+    padding:0px;
+    margin:0px;
+}
+html{
+    font-weight: bold;
+}
 span.tag:before{
 content: "(";
 }
-span.tag::after{
+span.tag:after{
     content: ")";
 }
+span {
+    font-size: 12px;
+}
+span.tag{
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: normal;
+}
+img{
+    display: none;
+}
+.cabecera2{
+    display:none;
+}
+.cabecera:before{
+    content:"Tareas";
+    font-size: 18px;
+    
+}
+.cabecera{
+    margin-bottom: 12px;
+}
+button{
+    display:none;
+}
+.completadas{
+    margin: 16px;  
+    margin-left: 40px;  
+    text-decoration: line-through;
+}
+.pendientes{
+    margin: 16px;
+}
+span.texto_pendiente:after{
+    content:":";
+}
+.buscador{
+    display: none;
+}
+
