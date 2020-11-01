@@ -171,7 +171,7 @@ a.desconectar{
     color:whitesmoke
 }
 a.desconectar:hover{
-    background-color: #8c3c71;
+    color: #8c3c71;
     cursor: pointer;
 }
 a.desconectar:active{
