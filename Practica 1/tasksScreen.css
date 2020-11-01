@@ -2,8 +2,7 @@
     margin: 0%;
     padding: 0%;
 }
-body
-{
+body{
     font-family: 'Grandstander', cursive;
     background-image: url(fondo2.jpg);
     background-repeat: no-repeat;
@@ -64,11 +63,11 @@ li.pendientes{
 }
 
 li.completadas{
-    background-color: dimgrey;
-    opacity: 85%;
+    background-color: rgba(153, 138, 138, 0.692);
+    
     color: black;
     text-decoration: line-through;
-    flex-basis: 100%;
+   /* flex-basis: 100%;*/
     margin: 2%;
     padding: 2.5%;
     display: block;
