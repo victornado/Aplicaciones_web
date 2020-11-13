@@ -1,0 +1,97 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    background-image: url(images/background.jpg);
+    background-size: cover;
+
+}
+.cabecera{
+    display: inline;
+    align-items: center;
+}
+.usuario{
+    list-style: none;
+    display: flex;
+    float: right;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 1.5%;
+    margin-top: 1.5%;
+    width: 15%;
+}
+li.us{
+    margin-bottom: 4%;
+}
+    
+.usuario img{
+    width: 70px;
+    border-radius: 50%;
+}
+.su{
+    padding: 0.7%;
+    border-radius: 40px;
+    background-color: #24b04d;
+}
+.cs{
+    text-decoration: none;
+    color: black;
+}
+.cs:active{
+color:black;
+}
+span.titulo{
+    float: left;
+    color: #24b04d;
+    font-weight: bold;
+    font-size:  110px;
+    margin-left: 5%;
+}
+div.menu
+{
+    clear: both;
+}
+ul.men{
+    list-style: none;
+}
+li.menu{
+    display: inline;
+    margin-right: .5%;
+    margin-left: 1%;
+    padding: 0.7%;
+    border-radius: 40px;
+    color: black;
+    background: #24b04d;
+    border: none;
+}
+button.menu{
+    color: black;
+    background: #24b04d;
+    border: none;
+}
+.barra-texto
+{
+    width: 230px;
+    color: black;
+    background: #24b04d;
+    border: none;
+}
+a.buscador
+{
+    text-decoration: none;
+    padding: .4%;
+    color: black;
+    border-radius: 40px;
+    background-color: #24b04d;
+}
+button.barra{
+    padding: .2%
+}
+.buscador:active
+{
+    color:black;
+}
+.menu:active{
+    color:black;
+}
