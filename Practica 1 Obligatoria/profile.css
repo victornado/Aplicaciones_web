@@ -1,0 +1,126 @@
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.firstRow{
+    margin-top: 150px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*IMAGEN y USERNAME*/
+
+.image{
+    background-color:  #222222;
+    border: 1px solid #24b04d;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 170px;
+    color:wheat;
+}
+
+.image img{
+    margin-bottom: 15px;
+    max-width: 70px;
+    border-radius: 50%;
+}
+
+.image .username{
+    margin-bottom: 20px;
+    font-size: 25px;
+    color:white;
+}
+
+/*ESTADISTICAS*/
+
+.goals{
+    background-color:  #222222;
+    border: 1px solid #24b04d;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 170px;
+    width: 700px;
+}
+
+.goals .goalsBox {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+ .text{
+    background-color: teal;
+    width:100%;
+    border-bottom: 1px solid #24b04d;
+    display:flex;
+    justify-content: center;
+}
+
+.goalsBox span{
+    color:wheat;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:50px;
+    margin-top: 30px; 
+}
+
+.goalsBox span .questions{
+    color:white;
+   margin-top: 2px;
+}
+
+.goalsBox span .replys{
+    color:white;
+    margin-top: 2px;
+}
+
+ .goalsBox span .reputation{
+    color:white;
+    margin-top: 2px;
+    margin-bottom: 100px;
+}
+
+/*MEDALLAS*/
+
+.medals{
+    background-color:  #222222;
+    border: 1px solid #24b04d;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 170px;
+    width: 900px;
+}
+
+.medals .medalType{
+    color:white;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.medals .medalType div{
+    
+    margin-left: 90px;
+    margin-right:90px;
+}
+
+.medals .medalType div span{
+    
+display:flex;
+flex-direction: column;
+align-items: center;
+}
