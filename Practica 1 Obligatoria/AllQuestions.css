@@ -1,0 +1,124 @@
+div.content{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #222222;
+    border-color: #24b04d;
+    color: white;
+    width: 80%;
+    margin-left:10%;
+}
+
+.opt{
+    margin-top: 20px;
+    width: 80%;
+}
+div.preguntas{
+    margin-top: 10px;
+    width: 80%;
+}
+
+h1{
+    background-color: #222222;
+    border-color: #24b04d;
+    color: wheat;
+}
+.btn{
+    padding: 0.7%;
+    border-radius: 40px;
+    color: black;
+    background: #24b04d;
+    border: none;
+    float: right;
+}
+.preg
+{
+    font-size: large;
+    float: left;
+}
+.post{
+    width: 100%;
+    border: 1px solid #24b04d;
+    padding: 1%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+}
+.postinfo{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3%;
+    width: 70%;
+}
+.tags{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.5%;
+   
+}
+.tag{
+    margin-right: 2%;
+    padding: 0.7%;
+    background-color: #24b04d;
+    font-style: italic;
+    border-radius: 13%;
+    color: wheat;
+    text-decoration: none;
+}
+.postuser{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}
+.fecha{
+    margin-bottom: 2%;
+}
+img.user{
+    width: 70px;
+    border-radius: 50%;
+    margin-bottom: 2%;
+}
+.title{
+    font-size: larger;
+    font-weight: bold;
+    color: #e67e22;
+    text-decoration: none;
+    margin-bottom: 1.5%;
+}
+.desc{
+    font-size: small;
+    max-height: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.separador{
+    clear: both;
+}
+.tag:hover{
+    color:#156d30;
+}
+.tag:active{
+    color:black;
+    background-color: #156d30;
+}
+.title:hover{
+    color:#cd6133;
+}
+.title:active{
+    color: #cd6133;
+    text-decoration: underline;
+}
+.btn:hover{
+    color:#156d30;
+}
+.btn:active{
+    color:black;
+    background-color: #156d30;
+    text-decoration: underline;
+}

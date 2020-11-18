@@ -27,6 +27,14 @@ li.us{
    
 .nick{
     color:white;
+    text-decoration: none;
+}
+.nick:hover{
+    color: #156d30;
+}
+.nick:active{
+    text-decoration: underline;
+    color: #156d30;
 }
 
 .usuario img{
