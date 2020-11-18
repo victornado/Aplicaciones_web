@@ -24,7 +24,11 @@ body{
 li.us{
     margin-bottom: 4%;
 }
-    
+   
+.nick{
+    color:white;
+}
+
 .usuario img{
     width: 70px;
     border-radius: 50%;
