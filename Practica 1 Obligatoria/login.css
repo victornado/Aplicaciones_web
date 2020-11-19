@@ -5,7 +5,6 @@
 
 html,body{
     height: 100%;
-    
 }
 
 span.titulo{
@@ -13,7 +12,6 @@ span.titulo{
     font-weight: bold;
     font-size:  110px;
     margin-bottom: 55px;
-   
 }
 
 body{
@@ -44,15 +42,13 @@ form.loginPanel{
 }
 
  form.loginPanel input{
-  padding:0.5%;
-   border:2px solid #24b04d;
+    padding:0.5%;
+    border:2px solid #24b04d;
     width: 200px;
     margin:20px auto;
     padding: 14px 10px;
     transition: 0.25s;
-    
     align-items: center;
-
 }
 
 form.loginPanel input:focus{

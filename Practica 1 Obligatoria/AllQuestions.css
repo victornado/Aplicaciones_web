@@ -19,7 +19,9 @@ div.preguntas{
     margin-top: 10px;
     width: 80%;
 }
-
+div.tit{
+    margin-top: 2%;
+}
 h1{
     background-color: #222222;
     border-color: #24b04d;
@@ -91,7 +93,7 @@ img.user{
     text-decoration: none;
     margin-bottom: 1.5%;
 }
-.desc{
+.desc{ /*CAMBIAR EN EL NODE PARA QUE ACEPTE SOLO LOS PRIMEROS 150 CHAR*/
     font-size: small;
     max-height: 45px;
     text-overflow: ellipsis;
