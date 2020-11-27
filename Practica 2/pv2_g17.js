@@ -1,12 +1,11 @@
 "use strict"
 
-/*let taskList = [
-    { text: "Preparar práctica AW", tags: ["AW", "practica"] },
-    { text: "Mirar fechas congreso", done: true, tags: [] },
-    { text: "Ir al supermercado", tags: ["personal"] },
-    { text: "Mudanza", done: false, tags: ["personal"] },
-    ];    
-    */
+let taskList = [
+    {id:1, text: "Preparar práctica AW", tag: "AW" },
+    {id:1, text: "Preparar práctica AW", tag: "practica" },
+    {id:2, text: "Mirar fechas congreso", done: true, tag: "hola" }
+];
+    
 
     /*Esta función devuelve un array con los textos de aquellas tareas de la lista de tareas tasks 
     que no estén finalizadas. */
@@ -50,4 +49,5 @@
 
         return task;
     }
-    
+
+  
