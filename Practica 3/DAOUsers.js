@@ -43,14 +43,15 @@ class DAOUsers {
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
+                        console.log(err);
                         callback(new Error("Error de acceso a la base de datos"));
                     }
                     else {
                         if (rows.length === 0) {
-                            callback(null, null); //no esta el usuario
+                            callback(null); //no esta el usuario
                         }
                         else {
-                            callback(null, rows);
+                            callback(rows[0].img);
                         }           
                     }
                 });
