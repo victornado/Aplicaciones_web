@@ -1,0 +1,25 @@
+{
+  "name": "aplicaciones_web",
+  "version": "1.0.0",
+  "description": "Repository for all web projects done in Aplicaciones Web",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victornado/Aplicaciones_web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victornado/Aplicaciones_web/issues"
+  },
+  "homepage": "https://github.com/victornado/Aplicaciones_web#readme"
+}
