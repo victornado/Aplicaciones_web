@@ -1,0 +1,81 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.titulo{
+    color: #24b04d;
+    font-weight: bold;
+    font-size:  110px;
+    margin-bottom: 55px;
+   
+}
+span.detalle{
+    color:rgb(180, 180, 180);
+    font-size: small;
+}
+
+body{
+    background-image: url(images/background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+form.loginPanel{
+    border:6px solid #24b04d;
+    display: flex;
+    background-color: #222222;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 400px;
+}
+
+.barras{
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column;
+    color: honeydew;
+}
+
+ form.loginPanel input{
+  padding:0.5%;
+   border:2px solid #24b04d;
+    width: 150px;
+    margin:20px auto;
+    padding: 14px 10px;
+    transition: 0.25s;
+    
+    align-items: center;
+}
+form.loginPanel input:focus{
+    width: 250px;
+}
+div.botones{
+    display: flex;
+    align-items: center;
+}
+
+form.loginPanel span.type{
+    font-family: sans-serif;
+    font-size: 50px;
+    color: #24b04d;
+    font-weight: bold;
+    font-style: italic;
+}
+form.loginPanel button{
+    margin: 5%;
+    width: 100px;
+    background: none;
+    color: honeydew;
+    border:2px solid #24b04d;
+}
+form.loginPanel button:hover{
+    color: #24b04d;
+    cursor: pointer;
+    width: 130px;
+}

@@ -1,0 +1,161 @@
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.firstRow{
+   
+    margin-top: 150px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*IMAGEN y USERNAME*/
+
+.image{
+    border-radius: 10%;
+    background-color:  #222222;
+    border: 1px solid #24b04d;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 170px;
+    color:wheat;
+}
+
+.image img{
+    margin-bottom: 15px;
+    max-width: 70px;
+    border-radius: 50%;
+}
+
+.image .username{
+    margin-bottom: 20px;
+    font-size: 25px;
+    color:white;
+}
+
+/*ESTADISTICAS*/
+
+.goals{
+    background-color:  #222222;
+    border: 1px solid #24b04d;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 170px;
+    width: 700px;
+}
+
+.goals .goalsBox {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.text{
+    background-color: #177b35;
+    width:100%;
+    border-bottom: 1px solid #24b04d;
+    display:flex;
+    justify-content: center;
+}
+
+.goalsBox span{
+    color:wheat;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:50px;
+    margin-top: 30px; 
+}
+
+.goalsBox span .questions{
+    color:white;
+   margin-top: 2px;
+}
+
+.goalsBox span .replys{
+    color:white;
+    margin-top: 2px;
+}
+
+ .goalsBox span .reputation{
+    color:white;
+    margin-top: 2px;
+    margin-bottom: 100px;
+}
+
+/*MEDALLAS*/
+
+.medals{
+    background-color:  #222222;
+    border: 1px solid #24b04d;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height: 270px;
+    width: 900px;
+}
+
+.medals .medalType{
+    color:white;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.medals .medalType div{
+    margin-left: 30px;
+    margin-right:30px;
+}
+
+.medals .medalType div span {   
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.medals .medalType div ul{
+    border: 2px solid orangered;
+    padding: 20px;
+    border-radius: 20%;
+}
+
+.medals .medalType div ul li{
+   width: 175px;
+   background-color: #177b35;
+   margin-bottom: 6px;
+   padding-left: 3px;
+   border:2px solid orangered;
+   border-radius: 40%;
+   padding:10px;
+}
+
+.medals .medalType div ul li span{
+    display: inline;
+    color:orangered;
+}
+
+.medals .medalType div ul li span.x:before{
+    content: " x";
+    
+}
+
+.medals .medalType div.gold ul{
+    background-color: gold;
+}
+.medals .medalType div.bronze ul{
+    background-color: #996734;
+}
+
+.medals .medalType div.silver ul{
+    background-color: silver;
+}
+

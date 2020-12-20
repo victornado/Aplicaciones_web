@@ -1,0 +1,70 @@
+.body{
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
+    height: 100%;
+    margin:10%;
+    border:3px solid black;
+}
+
+/* FILTRO */
+
+div.search{
+    display: flex;
+    margin:5px;
+    margin-left: 40%;
+    padding:1%;
+}
+div.search button{
+padding:0.3%;
+}
+div.search input{
+    border: 2px solid black;
+    
+}
+div.search a{
+    border: 2px solid black;
+}
+
+/*USUARIOS*/
+.users{
+    display: flex;
+    flex-wrap: wrap;
+}
+.users div.userBox{
+
+    background-color: #222222;
+    margin:5px;
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.users div.userBox img{
+    margin-bottom: 15px;
+    max-width: 70px;
+    border-radius: 50%;
+}
+.users div.userBox a{
+color:white;
+text-decoration: none;
+margin:2%;
+}
+.users div.userBox .score{
+    margin:2%;
+    margin-bottom: 5%;
+}
+.users div.userBox .tag{
+    margin:2%;
+    padding: 0.7%;
+    background-color: #24b04d;
+    font-style: italic;
+    border-radius: 13%;
+    text-decoration:none;
+    color:wheat;
+}

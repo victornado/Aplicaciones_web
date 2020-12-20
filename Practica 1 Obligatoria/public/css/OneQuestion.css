@@ -1,0 +1,211 @@
+div.content{
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    background-color: #222222;
+    border: 2px solid #24b04d;
+    color: white;
+    width: 80%;
+    margin-left:10%;
+    align-items: center;
+    justify-content: center;
+}
+div.enunciado{
+    display: flex;
+
+    width: 80%;
+}
+.opt{
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+}
+div.preguntas{
+    margin-top: 10px;
+    width: 80%;
+}
+
+h1{
+    margin-top: 2%;
+    background-color: #222222;
+    border-color: #24b04d;
+    color: #e67e22
+}
+.visit
+{
+    font-size: large;
+    font-weight: bold;
+    float: left;
+}
+div.vota{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    border: 1px solid #24b04d;
+    background:linear-gradient(270deg, #24b04d ,  #156d30 );
+    padding: .3%;
+    width: 20%;
+}
+span.text{
+    margin-left: 2%;
+    font-size: large;
+}
+a.like{
+    background-image: url(images/like.png);
+    background-size: cover;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 8%;
+}
+a.dislike{
+    background-image: url(images/dislike.png);
+    background-size: cover;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 8%;
+}
+
+.post{
+    width: 100%;
+    padding: 1%;
+    margin-left: 1%;
+    margin-top: 15px;
+    margin-bottom: 10%;
+    align-self: center;
+    
+}
+.postinfo{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-right: 3%;
+    width: 70%;
+}
+.tags{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.5%;
+   
+}
+.tag{
+    margin-right: 2%;
+    padding: 0.7%;
+    background-color: #24b04d;
+    font-style: italic;
+    border-radius: 13%;
+    color: wheat;
+    text-decoration: none;
+}
+.postuser{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+}
+.replyuser{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    padding:2%;
+}
+.fecha{
+    margin-bottom: 2%;
+}
+img.user{
+    width: 70px;
+    border-radius: 50%;
+    margin-bottom: 2%;
+}
+.desc{ 
+  font-size: large;
+  margin-bottom: 2%;
+}
+.separador{
+    clear: both;
+}
+.tag:hover{
+    color:#156d30;
+}
+.tag:active{
+    color:black;
+    background-color: #156d30;
+}
+a.like:active{
+    background-image: none;
+    background-color: green;
+}
+a.dislike:active{
+    background-image: none;
+    background-color: red;
+}
+div.respuestas{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+div.res{
+    margin-bottom: 2%;
+}
+div.reply1{
+    border: 1px solid #24b04d;
+    margin-bottom: 4%;
+}
+div.replytext{
+    margin-top: 2%;
+}
+div.replycont{
+    padding:2%;
+}
+div.writereply{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+div.wrtext{
+    margin-bottom: 1.5%;
+}
+.resp{
+    background-color: #222222;
+    color:white;
+    height: 200px;
+    width: 100%;
+    margin:2px;
+    margin-bottom: 2%;
+    margin-top: 0.5%;
+}
+div.button{
+    display: flex;
+    flex-direction: row-reverse;
+}
+div.button button{
+    background-color: #222222;
+    border: 2px solid #24b04d;
+    border-radius: 35px;
+    color:white;
+    padding: 1%;
+    padding-left: 2%;
+    transition: 0.4s;
+    margin-bottom: 5%;
+    width: 15%;
+}
+
+div.button button:hover{
+    background-color: #24b04d;
+    cursor: pointer;
+    font-size: medium;
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2), 0 12px 40px 0 rgba(0,0,0,0.19);
+}
+
+div.button button:active{
+    background-color: black;
+}

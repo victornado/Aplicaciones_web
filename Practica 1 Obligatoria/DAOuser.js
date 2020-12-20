@@ -12,7 +12,7 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                connection.query("SELECT * FROM user WHERE email = ? AND password = ?" ,
+                connection.query("SELECT nick FROM users WHERE email = ? AND password = ?" ,
                 [email,password],
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
@@ -45,9 +45,21 @@ class DAOUsers {
                 function(err) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
-                        callback(new Error("Error de acceso a la base de datos"));
+                        callback(new Error("Error de acceso a la base de datos en users"));
                     }
-                    callback(null);
+                    else{
+                        connection.query("INSERT INTO stats (nick, reputation, nQuestions, nAnswers) VALUES(?,?,?,?)" ,
+                        [nick,1,0,0],
+                        function(err, rows) {
+                  
+                            if (err) {
+                                callback(new Error("Error de acceso a la base de datos de stats"));
+                            }
+                            else {
+                                callback(null);       
+                            }
+                        });
+                    }
                 });  
             }
         });     
@@ -56,23 +68,22 @@ class DAOUsers {
     getUserImageName(email, callback) {
         this.pool.getConnection(function(err, connection) {
             if (err) { 
-                callback(new Error("Error de conexión a la base de datos"));
+                callback(new Error("Error de conexión a la base de datos"),null);
             }
             else {
-                connection.query("SELECT img FROM user WHERE email = ?" ,
+                connection.query("SELECT icon FROM users WHERE email = ?" ,
                 [email],
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
-                        console.log(err);
-                        callback(new Error("Error de acceso a la base de datos"));
+                        callback(new Error("Error de acceso a la base de datos"),null);
                     }
                     else {
-                        if (rows.length === 0) {
-                            callback(null); //no esta el usuario
+                        if (rows.length == 0) {
+                            callback(new Error("no existe el usuario"),null); //no esta el usuario
                         }
                         else {
-                            callback(rows[0].img);
+                            callback(null, rows[0].icon);
                         }           
                     }
                 });
@@ -87,24 +98,19 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                connection.query("SELECT nick, icon, date, FROM user WHERE email = ?" ,
+                connection.query("SELECT nick, icon, date FROM users WHERE email = ?" ,
                 [email],
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
-                        console.log(err);
-                        callback(new Error("Error de acceso a la base de datos"));
+                        callback(new Error("Error de acceso a la base de datos"),null);
                     }
                     else {
-                        if (rows.length === 0) {
-                            callback(null); //no esta el usuario
+                        if (rows.length == 0) {
+                            callback(new Error("el usuario no existe"),null); //no esta el usuario
                         }
                         else {
-                            let datos;
-                            datos.nick=rows[0].nick;
-                            datos.icon=rows[0].icon;
-                            datos.date=rows[0].date;
-                            callback(datos);
+                            callback(null,rows[0]);
                         }           
                     }
                 });
@@ -119,22 +125,22 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                connection.query("SELECT U.nick, U.icon, U.date, S.reputation , S.nQuestions, S.nAnswers FROM user U JOIN stats S (using nick) WHERE nick = ?",//"SELECT * FROM user u JOIN medals m (using nick) JOIN stats s (using nick) WHERE nick = ?" ,
+                connection.query("SELECT U.nick, U.icon, U.date, S.reputation , S.nQuestions, S.nAnswers FROM users U JOIN stats S WHERE U.nick = ?",//"SELECT * FROM user u JOIN medals m (using nick) JOIN stats s (using nick) WHERE nick = ?" ,
                 [nick],
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
-                        console.log(err);
-                        callback(new Error("Error de acceso a la base de datos"));
+                       
+                        callback(new Error("Error de acceso a la base de datos en el join"));
                     }
                     else {
                         if (rows.length === 0) {
-                            callback(null); //no esta el usuario
+                            callback(new Error("no existe el usuario")); //no esta el usuario
                         }
                         else { //en caso de haber devuelto algo
                             //Inicializamos valores
                             let  datos={
-                                id:"",
+                                nick:"",
                                 icon:"",
                                 date:"",
                                 reputation:0,
@@ -142,7 +148,7 @@ class DAOUsers {
                                 nAnswers:0,
                                 medals:[],
                             };
-                            datos.id=rows[0].id;
+                            datos.nick=rows[0].nick;
                             datos.icon=rows[0].icon;
                             datos.date=rows[0].date;
                             datos.reputation=rows[0].reputation;
@@ -153,14 +159,13 @@ class DAOUsers {
                             connection.query("SELECT * FROM medals WHERE nick = ?" ,
                             [nick],
                             function(err, rows) {
-                                connection.release(); // devolver al pool la conexión
                                 if (err) {
-                                    console.log(err);
-                                    callback(new Error("Error de acceso a la base de datos"));
+                                 
+                                    callback(new Error("Error de acceso a la base de datos en medal"));
                                 }
                                 else {
                                     if (rows.length === 0) {
-                                        callback(null); //esta vacio
+                                        
                                     }
                                     else {
                                         //cargamos el array de medallas
@@ -175,8 +180,9 @@ class DAOUsers {
                                     }           
                                 }
                             });
+                            callback(datos);
                         }     
-                        callback(datos);      
+                              
                     }
                 });
             }
@@ -189,12 +195,14 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                connection.query("SELECT u.nick, u.img, u.tag, s.reputation FROM users u join stats s using nick;" ,
+                connection.query("SELECT u.nick, u.icon, u.tag, s.reputation FROM users u join stats s on u.nick=s.nick" ,
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
-                        console.log(err);
-                        callback(new Error("Error de acceso a la base de datos"));
+                       
+                        callback(new Error("Error de acceso a la base de datos "));
+                        callback(new Error("Error de acceso a la base de datos "));
+                        callback(new Error("Error de acceso a la base de datos "));
                     }
                     else {
                         if (rows.length === 0) {
