@@ -45,9 +45,11 @@ let taskList = [
         };
         let textoBruto = texto.split(" ");
         task.tags = textoBruto.filter(v => v.startsWith("@") == true);
+        task.tags=task.tags.map(v => v.substr(1));
         task.text = textoBruto.filter(v => v.startsWith("@") == false).join(" ");
 
         return task;
     }
-
-  
+    
+  let a=createTask("hola @tag");
+  console.log(a);

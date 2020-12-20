@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Practica 1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/tasksScreen.css'>
+    <link rel='stylesheet' type='text/css' media='print' href='./css/tasksPrint.css'>
+    <link rel="icon" type="img/png" href="icono.png">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap" rel="stylesheet">
+    <!-- <script src='main.js'></script> -->
+
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <img src="img/tareas.png" alt="tareas">
+        </div>
+        <div class="cabecera2">
+            <img src="img/usuario.jpg" alt="">
+            <div class="usuario">
+                <span class="correo">
+                    Usuario@ucm.es
+                </span>
+                <a class="desconectar" href="">Desconectar</a>
+            </div>
+
+        </div>
+    </header>
+    <div class="body">
+
+        <ul class="lista">
+            <li class="pendientes">
+                <span class="texto_pendiente">
+                    Preparar practica AW 
+                </span>
+                <span class="tag">AW</span> <span class="tag">Practica</span> 
+                <a class="marcar">Marcar finalizada</a>
+            </li>
+            <li class="completadas">
+                <span >
+                    Mirar fechas congreso
+                </span>
+            </li>
+            <li class="pendientes">
+                <span class="texto_pendiente">
+                    Ir al supermercado 
+                </span>
+                <span class="tag">Personal</span> <a class="marcar">Marcar finalizada</a>
+            </li>
+            <li class="pendientes">
+                <span class="texto_pendiente">
+                    Mudanza 
+                </span>
+                <span class="tag">Personal</span> <a class="marcar">Marcar finalizada</a>
+            </li>
+        </ul>
+
+        <div class="buscador">
+            <input class="textfield" type="text" name="" id="1" placeholder="Añadir nueva tarea">
+            <input class= "add" type="submit" value="Añadir"> <!--Es diferente de un boton-->
+        </div>
+
+        <a class="eliminar">
+            Eliminar tareas completadas
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>

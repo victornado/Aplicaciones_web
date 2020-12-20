@@ -19,7 +19,7 @@ let daoTask = new DAOTasks(pool);
 let myTask ={ text: "Preparar práctica AW",done:false, tags: ["AW" , "practica"] };
 
 //daoTask.insertTask("hola@nada.es",myTask,a);
-//daoTask.getAllTasks("hola@nada.es",a);
+daoTask.getAllTasks("usuario@ucm.es",a);
 //daoTask.markTaskDone(31,b);
 //daoTask.deleteCompleted("asd",b)
 //daoUser.isUserCorrect("hola@nada.es","12345",a);

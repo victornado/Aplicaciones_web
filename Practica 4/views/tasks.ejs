@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Practica 1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/tasksScreen.css'>
+    <link rel='stylesheet' type='text/css' media='print' href='css/tasksPrint.css'>
+    <link rel="icon" type="img/png" href="../public/img/icono.png">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap" rel="stylesheet">
+    <!-- <script src='main.js'></script> -->
+
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <img src="img/tareas.png" alt="tareas">
+        </div>
+        <div class="cabecera2">
+            <img src="img/usuario.jpg" alt="">
+            <div class="usuario">
+                <span class="correo">
+                    usuario@ucm.es
+                </span>
+                <a class="desconectar" href="">Desconectar</a>
+            </div>
+
+        </div>
+    </header>
+    <div class="body">
+
+        <ul class="lista">
+            <% if(taskList!=undefined && taskList.length>0   ){ %>
+                <% taskList.forEach(function(task){ %>
+                    <% if(task.done == 0) { %>
+                        <li class="pendientes">
+                            <span class="texto_pendiente">
+                                <%= task.text %>
+                            </span>
+                        
+                                <% task.tags.forEach(function(tag){ %>
+                                    <% if(tag!= null) { %>
+                                        <span class="tag"><%= tag %></span> 
+                                    <% } %>
+                                <% }); %>
+                            
+                            <a href= <%= "/finish/" + task.id %>  class="marcar">Marcar finalizada</a>
+                        </li>
+                    <% } %>
+                    <% if(task.done == 1) { %>
+                        <li class="completadas">
+                            <span class="texto_pendiente">
+                                <%= task.text %>
+                            </span>
+                                <% task.tags.forEach(function(tag){ %>
+                                    <% if(tag!= null) { %>
+                                        <span class="tag"><%= tag %></span> 
+                                    <% } %>
+                                <% }); %> 
+                        </li>
+                    <% } %>
+                <% }); %>
+            <% } %>  
+        </ul>
+
+        <div class="buscador">
+            <form action="/addTask" method = "POST">
+                <input class="textfield" type="text" name="tarea" id="1" placeholder="Añadir nueva tarea">
+                <input class= "add" type="submit" value="Añadir"> <!--Es diferente de un boton-->
+            </form>
+        </div>
+
+        <a href="/deleteCompleted" class="eliminar">
+            Eliminar tareas completadas
+        </a>
+
+    </div>
+
+
+</body>
+
+</html>
