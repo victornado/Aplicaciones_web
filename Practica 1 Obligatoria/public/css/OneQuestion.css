@@ -54,7 +54,7 @@ span.text{
     font-size: large;
 }
 a.like{
-    background-image: url(images/like.png);
+    background-image: url(../images/like.png);
     background-size: cover;
     border-radius: 50%;
     width: 30px;
@@ -62,7 +62,7 @@ a.like{
     margin-left: 8%;
 }
 a.dislike{
-    background-image: url(images/dislike.png);
+    background-image: url(../images/dislike.png);
     background-size: cover;
     border-radius: 50%;
     width: 30px;
@@ -126,20 +126,30 @@ img.user{
     border-radius: 50%;
     margin-bottom: 2%;
 }
+
+div.replytext{
+    width: 70%;
+    margin-top: 2%;
+}
+
 .desc{ 
   font-size: large;
   margin-bottom: 2%;
 }
+
 .separador{
     clear: both;
 }
+
 .tag:hover{
     color:#156d30;
 }
+
 .tag:active{
     color:black;
     background-color: #156d30;
 }
+
 a.like:active{
     background-image: none;
     background-color: green;
@@ -160,9 +170,7 @@ div.reply1{
     border: 1px solid #24b04d;
     margin-bottom: 4%;
 }
-div.replytext{
-    margin-top: 2%;
-}
+
 div.replycont{
     padding:2%;
 }

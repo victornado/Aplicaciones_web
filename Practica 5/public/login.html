@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Practica 1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./css/tasksScreen.css'>
+    <link rel="icon" type="img/png" href="icono.png">
+    <link href="https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap" rel="stylesheet">
+    <!-- <script src='main.js'></script> -->
+
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <img src="img/tareas.png" alt="tareas">
+        </div>
+    </header>
+    <div class="body">
+        <div class="form">
+            <form action="/loginPost" method = "POST">
+                <span>Dirección de correo: </span>
+                <input class="textfield" type="text" name="correo" id="1" placeholder="Dirección de correo">
+                <span>Contraseña: </span>
+                <input class="textfield" type="password" name="pass" id="2" placeholder="contraseña">
+                <input class= "aceptar" type="submit" value="Aceptar"> 
+            </form>
+        </div>
+        <span class="err">Usuario y/o contraseña no validos</span>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Practica 1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/header.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/AllQuestions.css'>
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <span class="titulo"> 404 </span>
+                <ul class="usuario"> 
+                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us">
+                        <a href=<%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                    </li>
+                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                </ul>
+        </div>
+     <div class="menu">
+        <ul class="men">
+            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> 
+                <form action="/SBText" class="SBTextf" method="POST">
+                    <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
+                    <button type="submit" value="SBText" class="buscador">
+                        Buscar
+                    </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </header>
+
+       <div class="content">
+        
+            <div class="tit"><h1>Preguntas sin respuestas</h1></div>
+            <div class="opt">
+                <span class="preg"> <%= questList.length %> Preguntas</span>
+                <a href="/createQuestion" class="btn">Formular pregunta</a>
+            </div>
+            <% if(questList!=undefined && questList.length>0   ){ %>
+                <% questList.forEach(function(quest){ %>
+                    
+                    <div class="preguntas">
+
+                        <div class="post">
+                            <div class="postinfo">
+                                <a href= <%= "/OneQuestion/" +  quest.id %> class="title"> <%= quest.title %> </a>
+                                <span class="desc">  <%= quest.text %>  </span>
+                                <div class="tags">
+                                    <% quest.tags.forEach(function(tag){ %>
+                                        <% if(tag!= null) { %>
+                                            <a href= <%= "/SBTag/" + tag %> class="tag"><%= tag %></a> 
+                                        <% } %>
+                                    <% }); %>
+                                </div>
+                            </div>
+                            <div class="postuser">
+                                <span class="fecha"><%= quest.date %></span>
+                                <% if(quest.icon == "") { %>
+                                    <% quest.icon="NoPerfil.jpg" %>
+                                <% } %>
+                                <img src= <%= "/imagenUsuarios/" + quest.icon %> alt="" class="user"> 
+                                <a href= <%="/profile/" + quest.nick %> class="nick"><%= quest.nick %></a>
+                            </div>
+        
+                            <div class="separador"></div>
+                        
+                        </div>
+                    </div>
+
+                <% }); %>
+            <% } %>
+       </div>
+</body>

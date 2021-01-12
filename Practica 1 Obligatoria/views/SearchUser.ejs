@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los usuarios</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/header.css'>
+    <link rel="stylesheet" type='text/css' media='screen' href="css/allUsers.css">
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+</head>
+<body>
+    <header>
+        <div class="cabecera">
+            <span class="titulo"> 404 </span>
+                <ul class="usuario"> 
+                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us">
+                        <a href=<%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                    </li>
+                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                </ul>
+        </div>
+     <div class="menu">
+        <ul class="men">
+            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> 
+                <form action="/SBText" class="SBTextf" method="POST">
+                    <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
+                    <button type="submit" value="SBText" class="buscador">
+                        Buscar
+                    </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </header>
+
+    <div class="body">
+
+        <form action="/UserFilter" class="search" method="POST"> 
+            <input class="barra-texto" type="text" name="userF" placeholder="Filtrar usuario">
+            <button type="submit" value="UserFilter" class="buscador">
+                filtrar
+            </button>
+        </form>
+
+        <div class="users">
+            <% if(userslist!=null   ){ %>
+                <% userslist.forEach(function(user){ %>
+
+                <div class="userBox">
+                    <% if(quest.icon == "") { %>
+                        <% quest.icon="NoPerfil.jpg" %>
+                    <% } %>
+                <img src= <%= "/imagenUsuarios/" + user.icon %> alt="">
+                <a href= <%="/profile/" + user.nick %> > <%= user.nick %> </a>
+                <span class="score"> <%= user.reputation %> </span>
+                <a href=<%= "/SBTag/" + user.tag %> class="tag"> <%= user.tag %> </a>
+                </div>
+
+                <% }); %>
+            <% } %> 
+        </div>
+
+    </div>
+
+</body>
+</html>

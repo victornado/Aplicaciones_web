@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Formular pregunta</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/header.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/createQuestion.css'>
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <span class="titulo"> 404 </span>
+                <ul class="usuario"> 
+                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us">
+                        <a href=<%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                    </li>
+                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                </ul>
+        </div>
+     <div class="menu">
+        <ul class="men">
+            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> 
+                <form action="/SBText" class="SBTextf" method="POST">
+                    <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
+                    <button type="submit" value="SBText" class="buscador">
+                        Buscar
+                    </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </header>
+
+    <div class="center">
+        <div class="body">
+            <span class="FP-text">formular una pregunta</span>
+    
+        
+            <form action="/createQuestionForm" class="loginPanel" method="POST">
+
+                <div class="barras">
+                    <span>TITULO:*</span>
+                    <span class="info">Se específico con el título </span>
+                    <input type="text"  name="titulo" placeholder="¡Ponle un titulo a la pregunta!">
+                </div>
+
+                <div class="barras">
+                    <span>CUERPO:*</span>
+                    <span class="info">Escribe toda la información útil y necesaria para desarrollar la pregunta </span>
+                   
+                    <textarea name="cuerpo" ></textarea>
+                </div>
+                <div class="buttom"> <button type="submit" value="createQuestionForm">Publicar la pregunta</button></div>
+               
+            </form>
+            
+        </div>   
+        
+    </div>
+
+
+
+</body>

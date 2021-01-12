@@ -3,7 +3,7 @@
     padding: 0%;
 }
 body{
-    background-image: url(images/background.jpg);
+    background-image: url(../images/background.jpg);
     background-size: cover;
 
 }
@@ -67,7 +67,7 @@ div.menu
 ul.men{
     list-style: none;
 }
-li.menu{
+li.menu,form.SBTextf{
     display: inline;
     margin-right: .5%;
     margin-left: 1%;
@@ -81,6 +81,9 @@ a.menu{
     padding: 0.7%;
     border-radius: 40px;
 }
+button:hover{
+    cursor:pointer;
+}
 a.menu:hover{
     color: #156d30;
 }
@@ -88,10 +91,10 @@ a.menu:active{
     color:black;
     background-color:  #156d30;
 }
-a.buscador:hover{
+button.buscador:hover{
     color: #156d30;
 }
-a.buscador:active{
+button.buscador:active{
     color:black;
     background-color:  #156d30;
 }
@@ -104,7 +107,7 @@ a.buscador:active{
     border-radius: 40px;
     border: none;
 }
-a.buscador
+button.buscador
 {
     text-decoration: none;
     padding: .7%;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404-login</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/login.css'>
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+</head>
+<body>
+    <span class="titulo">404</span>
+  
+       
+        <form action="/loginForm" class="loginPanel" method="POST">
+            <span class="type">LOGIN</span>
+            <div class="barras">
+                <span>Correo electrónico:*</span>
+                <input type="text"  name="user" placeholder="email">
+            </div>
+            <div class="barras">
+                <span>Contraseña:*</span>
+                <input type="password" name="pass" placeholder="password">
+            </div>
+            <div class="botones">
+                <a href="/register">Register</a>
+                <button type="submit" value="Login">Login</button>
+            </div>
+            <% if(errorMsg!=null) { %>
+                <div class="error">
+                    <span class="errmsg">Usuario y/o contraseña incorrectos</span>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</body>
+</html>

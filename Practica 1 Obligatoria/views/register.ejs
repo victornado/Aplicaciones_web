@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404-register</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/register.css'>
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+</head>
+<body>
+    <header>
+        <span class="titulo">404</span>
+    </header>
+    <div>
+        <form action="registerForm" class="loginPanel" method="POST">
+            <span class="type">REGISTER</span>
+            <div class="barras">
+                <span>Email:*</span>
+                <input type="email" name="user" id="correo" placeholder="email" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" required/>
+            </div>
+            <div class="barras">
+                <span>Password:*</span>
+                <span class="detalle">Must contain between 6 and 16 characters</span>
+                <input type="password" name="pass" minlength="6" maxlength="16" placeholder="password" required>
+            </div>
+            <div class="barras">
+                <span>Confirm password:*</span>
+                <span class="detalle">Must contain between 6 and 16 characters</span>
+                <input type="password" name="pass2" minlength="6" maxlength="16" placeholder="password" required>
+            </div>
+            <div class="barras">
+                <span>Nickname to show:*</span>
+                <span class="detalle">Must contain between 3 and 20 characters</span>
+                <input type="text" name="nick" minlength="3" maxlength="20" placeholder="Nick" required>
+            </div>
+            <div class="barras">
+                <span>Profile picture:</span>
+                <span class="detalle">The image will be shown to the rest of the users</span>
+                <input class="img" type="file" name="img" accept="image/png, image/jpeg" id="">
+            </div>
+            <div class="botones">
+                <button type="submit" value="/registerForm">Create account</button>
+                <a href="/login">Login</a>
+            </div>
+
+            <% if(errorMsg==1) { %>
+                <div class="error">
+                    <span class="errmsg"> El email o el nick ya esta registrado </span>
+                </div>
+            <% } %>
+            <% if(errorMsg==2) { %>
+                <div class="error">
+                    <span class="regOk"> Se ha registrado correctamente. Presione "Login" e inicie sesion </span>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Practica 1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/header.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/OneQuestion.css'>
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <span class="titulo"> 404 </span>
+                <ul class="usuario"> 
+                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us">
+                        <a href=<%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                    </li>
+                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                </ul>
+        </div>
+     <div class="menu">
+        <ul class="men">
+            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> 
+                <form action="/SBText" class="SBTextf" method="POST">
+                    <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
+                    <button type="submit" value="SBText" class="buscador">
+                        Buscar
+                    </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </header>
+
+       <div class="content">
+        
+            <div class="enunciado"><h1> <%= info.question.title %></h1></div>
+            <div class="opt">
+                <span class="visit">Visto <%= info.nvisits %> veces</span>
+                <div class="vota">
+                    <span class="text"><%= info.voteq %> Votos</span>
+                    <a href= <%= "/voteLikeQuestion/" + info.question.id + "/" + info.question.nick %> class="like"></a>
+                    <a href= <%= "/voteDislikeQuestion/" + info.question.id + "/" + info.question.nick %> class="dislike"></a>
+                </div>
+            </div>
+
+            <div class="preguntas">
+
+                <div class="post">
+                    <div class="postinfo">
+                        <span class="desc"> <%= info.question.text %> </span>
+                        <div class="tags">
+                            <% if(info.question.tags!=undefined && info.question.tags.length>0){ %>
+
+                                <% info.question.tags.forEach(function(tag){ %>
+                                            <% if(tag!= null) { %>
+                                                <a href= <%= "/SBTag/" + tag %> class="tag"><%= tag %></a> 
+                                            <% } %>
+                                        <% }); %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="postuser">
+                                <span class="fecha"><%= info.question.date %></span>
+                                <% if(info.question.icon == "") { %>
+                                    <% info.question.icon="NoPerfil.jpg" %>
+                                <% } %>
+                                <img src= <%= "/imagenUsuarios/" + info.question.icon %> alt="" class="user"> 
+                                <a href= <%="/profile/" + info.question.nick %> class="nick"><%= info.question.nick %></a>
+                    </div>
+
+                    <div class="separador"></div>
+                
+                </div>
+            </div>
+            <div class="respuestas">
+                <% if(info.replys!=null   ){ %>
+                    <div class="res">
+                        <h1 class="nres"> <%= info.replys.length %> Respuestas</h1>
+                    </div>
+                
+                    <% info.replys.forEach(function(rep){ %>
+
+                        <div class="reply1">
+                            <div class="replycont">
+                                <div class="vota">
+                                    <span class="text"> <%= rep.votes %> Votos</span>
+                                    <a href= <%= "/voteLikeReply/" + rep.id + "/" + info.question.id + "/" + rep.nick %> class="like"></a>
+                                    <a href=<%= "/voteDislikeReply/" + rep.id + "/" + info.question.id + "/" + rep.nick %>  class="dislike"></a>
+                                </div>
+            
+                                <div class="replytext">
+                                    <span class="desc"> <%= rep.text %> </span>
+                                </div>
+                            </div>
+                            <div class="replyuser">
+
+                                <span class="fecha">Formulado el <%= rep.date %></span>
+                                <% if(rep.icon == "") { %>
+                                    <% rep.icon="NoPerfil.jpg" %>
+                                <% } %>
+                                <img src= <%= "/imagenUsuarios/" + rep.icon %> alt="" class="user"> 
+                                <a href= <%="/profile/" + rep.nick %> class="nick"><%= rep.nick %></a>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } %>
+            </div>
+            <div class="writereply">
+                <div class="wrtext">
+                    <h1 class="wtext">Escribir respuesta</h1>
+                </div>
+                <form action=<%= "/postReply/" + info.question.id + "/" + locals.nick %> method="post">
+                    <div class="write">
+                        <textarea class="resp" name="cuerpo" ></textarea>
+                    </div>
+                    <div class="button"> <button type="submit" value="createReplyForm">Publicar</button></div>
+                </form>
+            </div>
+       </div>
+</body>

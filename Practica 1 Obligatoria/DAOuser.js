@@ -38,10 +38,9 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                var f = new Date();
-                let fecha = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-                connection.query("INSERT INTO users (nick, email, password, icon, date)  VALUES (?,?,?,?,?)",
-                [nick, email, password, img, fecha],
+              
+                connection.query("INSERT INTO users (nick, email, password, icon)  VALUES (?,?,?,?)",
+                [nick, email, password, img],
                 function(err) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
@@ -110,6 +109,7 @@ class DAOUsers {
                             callback(new Error("el usuario no existe"),null); //no esta el usuario
                         }
                         else {
+                            if(rows[0].icon=="") rows[0].icon=null;
                             callback(null,rows[0]);
                         }           
                     }
@@ -125,17 +125,17 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                connection.query("SELECT U.nick, U.icon, U.date, S.reputation , S.nQuestions, S.nAnswers FROM users U JOIN stats S WHERE U.nick = ?",//"SELECT * FROM user u JOIN medals m (using nick) JOIN stats s (using nick) WHERE nick = ?" ,
+                connection.query("SELECT U.nick, U.icon, U.date, S.reputation , S.nQuestions, S.nAnswers FROM users U JOIN stats S on U.nick=S.nick WHERE U.nick = ?",//"SELECT * FROM user u JOIN medals m (using nick) JOIN stats s (using nick) WHERE nick = ?" ,
                 [nick],
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
                        
-                        callback(new Error("Error de acceso a la base de datos en el join"));
+                        callback(new Error("Error de acceso a la base de datos en el join"),null);
                     }
                     else {
                         if (rows.length === 0) {
-                            callback(new Error("no existe el usuario")); //no esta el usuario
+                            callback(new Error("no existe el usuario"),null); //no esta el usuario
                         }
                         else { //en caso de haber devuelto algo
                             //Inicializamos valores
@@ -158,29 +158,30 @@ class DAOUsers {
                             //Obtenemos el array de medallas
                             connection.query("SELECT * FROM medals WHERE nick = ?" ,
                             [nick],
-                            function(err, rows) {
+                            function(err, row) {
                                 if (err) {
                                  
-                                    callback(new Error("Error de acceso a la base de datos en medal"));
+                                    callback(new Error("Error de acceso a la base de datos en medal"),null);
                                 }
                                 else {
-                                    if (rows.length === 0) {
-                                        
-                                    }
-                                    else {
-                                        //cargamos el array de medallas
-                                        let medal;
-                                       for(var i=0;i<rows.length;i++)
+                                    
+                                      
+                                       for(let i=0; i<row.length; i++)
                                        {
-                                           medal.type=row[i].type;
-                                           medal.text=row[i].text;
-                                           medal.number=row[i].number;
-                                           datos.medals.push(medal);
+                                            let medal={
+                                                type:"",
+                                                text:"",
+                                                number:1,
+                                            };
+                                            medal.type=row[i].type;
+                                            medal.text=row[i].text;
+                                            medal.number=row[i].number;
+                                            datos.medals.push(medal);
                                        }
-                                    }           
-                                }
+                                    }   
+                                    callback(null, datos);        
                             });
-                            callback(datos);
+                            
                         }     
                               
                     }
@@ -199,25 +200,70 @@ class DAOUsers {
                 function(err, rows) {
                     connection.release(); // devolver al pool la conexión
                     if (err) {
-                       
-                        callback(new Error("Error de acceso a la base de datos "));
-                        callback(new Error("Error de acceso a la base de datos "));
                         callback(new Error("Error de acceso a la base de datos "));
                     }
-                    else {
-                        if (rows.length === 0) {
-                            callback(null); //no esta el usuario
-                        }
-                        else {
-                            callback(rows);
-                        }           
+                    else{
+                        callback(null,rows);
                     }
+                   
                 });
             }
         });     
 
     }
 
+    searchByTextBar(text,callback){
+        this.pool.getConnection(function(err, connection) {
+            if (err) { 
+                callback(new Error("Error de conexión a la base de datos"));
+            }
+            else {
+                connection.query("SELECT u.nick, u.icon, u.tag, s.reputation FROM users u join stats s on u.nick=s.nick where instr( u.nick , ? ) order by u.nick;" ,
+                [text],
+                function(err, rows) {
+                    connection.release(); // devolver al pool la conexión
+                    if (err) {
+                        callback(new Error("Error de acceso a la base de datos "));
+                    }
+                    else{
+                        callback(null,rows);
+                    }
+                });     
+            }
+        });
+    }
 
+    modifyRep(nick, value, callback){
+        this.pool.getConnection(function(err, connection) {
+            if (err) { 
+                callback(new Error("Error de conexión a la base de datos"));
+            }
+            else {
+                connection.query("SELECT reputation from stats where nick = ?" ,
+                [nick],
+                function(err, rows) {
+                    connection.release(); // devolver al pool la conexión
+                    if (err) {
+                        callback(new Error("Error de acceso a la base de datos "));
+                    }
+                    else{
+                        let rep = rows[0].reputation + value;
+                        if(rep < 1)
+                            rep=1;
+                        connection.query("UPDATE stats set reputation = ? where nick = ?  ",
+                        [rep,nick],
+                        function(err){
+                            if(err){
+                                callback(new Error("Error de conexión a la base de datos"));
+                            }
+                            else{
+                                callback(null, true)
+                            }
+                        })
+                    }
+                });     
+            }
+        });
+    }
 }
 module.exports = DAOUsers;

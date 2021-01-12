@@ -10,20 +10,20 @@
 
 /* FILTRO */
 
-div.search{
+form.search{
     display: flex;
     margin:5px;
     margin-left: 40%;
     padding:1%;
 }
-div.search button{
+form.search button{
 padding:0.3%;
 }
-div.search input{
+form.search input{
     border: 2px solid black;
     
 }
-div.search a{
+form.search button{
     border: 2px solid black;
 }
 

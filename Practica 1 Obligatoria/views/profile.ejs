@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>profile</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/header.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/profile.css'>
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <span class="titulo"> 404 </span>
+                <ul class="usuario"> 
+                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us">
+                        <a href= <%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                    </li>
+                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                </ul>
+        </div>
+     <div class="menu">
+        <ul class="men">
+            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> 
+                <form action="/SBText" class="SBTextf" method="POST">
+                    <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
+                    <button type="submit" value="SBText" class="buscador">
+                        Buscar
+                    </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </header>
+
+        <div class="body">
+            <div class="firstRow">
+                <div class="image">
+                    <% if(userInfo.icon == "") { %>
+                        <% userInfo.icon="NoPerfil.jpg" %>
+                    <% } %>
+                    <img src= <%= "/imagenUsuarios/" + userInfo.icon %> alt="">
+                    <span class="username"><%= userInfo.nick %></span>
+                    <span>miembro desde <span class="date"><%= userInfo.date %></span></span> 
+                    </div>
+                    <div class="goals">
+                        <span class="text">ESTADISTICAS</span>
+                        <div class="goalsBox">
+                            <span>Preguntas <span class="questions"><%= userInfo.nQuestions %></span></span>
+                            <span>Reputacion <span class="reputation"><%= userInfo.reputation %></span></span>
+                            <span>Respuestas <span class="replys"><%= userInfo.nAnswers %></span></span>
+                    </div>
+                </div>  
+            </div>
+            <div class="medals">
+                <span class="text">MEDALLAS</span>
+                <% let medBronze = 0; 
+                 let medSilver = 0; 
+                let medGold = 0; 
+                userInfo.medals.forEach(function(medal) { 
+                    if(medal.type =="bronce"){ 
+                           medBronze+= medal.number;
+                        } 
+                     if (medal.type == "plata") { 
+                         medSilver+= medal.number; 
+                    } 
+                    if(medal.type=="oro"){ 
+                          medGold+= medal.number; 
+                   } 
+                   
+               } ); %>
+                
+                    
+                    <div class="medalType">
+                    
+                        <div class="bronze">
+                            <span>Bronce<span> <%= medBronze %> </span></span>
+                            
+                            <ul>
+                                <% userInfo.medals.forEach(function(medal) { %>
+                                    <% if(medal.type=="bronce") { %>
+                                        <li> <%= medal.text %> <span class="x"><%= medal.number %></span></li>
+                                    <% } %>
+                               <% }); %> 
+                            </ul>
+                        </div>
+
+                        <div class="silver">
+                            <span>Plata <span><%= medSilver %></span> </span>
+                            
+                            <ul>
+                                <% userInfo.medals.forEach(function(medal) { %>
+                                    <%  if(medal.type=="plata") { %>
+                                        <li> <%= medal.text %> <span class="x"><%= medal.number %></span></li>
+                                <% } %>
+                            <% }); %> 
+                            </ul>
+                        </div>
+
+                        <div class="gold">
+                            <span>Oro<span> <%= medGold %></span></span>
+                            
+                            <ul>
+                                <% userInfo.medals.forEach(function(medal) { %>
+                                    <%  if(medal.type=="oro") { %>
+                                    <li> <%= medal.text %> <span class="x"><%= medal.number %></span></li>
+                                    <% } %>
+                                <% }); %> 
+                            </ul>
+                            
+                        </div>
+                    </div>
+                
+                <% if (userInfo.medals.length == 0) {%>
+                    <div class="medalType">
+                        
+                        <div class="bronze">
+                            <span>Bronce<span>0</span></span>
+                            
+                            <ul>
+                            
+                            </ul>
+                        </div>
+    
+                        <div class="silver">
+                            <span>Plata <span>0</span> </span>
+                            
+                            <ul>
+                                
+                            </ul>
+                        </div>
+    
+                        <div class="gold">
+                            <span>Oro<span>0</span></span>
+                            
+                            <ul>
+                                
+                            </ul>
+                        </div>
+    
+                    </div>
+                <% } %>
+                    
+                
+                
+            </div>
+        </div>
+</body>

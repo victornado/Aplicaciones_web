@@ -1,0 +1,216 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    font-family: 'Grandstander', cursive;
+    background-image: url(../img/fondo2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+div.cabecera{
+    float: left;
+    margin-left: 5%;
+    margin-top: 0.5%;
+}
+
+div.cabecera2{
+    margin-right: 5%;
+    margin-top: 1%;
+    float: right;
+    display: flex;
+    align-items: center;
+}
+div.cabecera2 img{
+    width: 60px;
+    margin-right: 10%;
+}
+div.usuario{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+div.usuario span{
+    margin-bottom: 6%;
+}
+header{
+    color:whitesmoke;
+    background: linear-gradient(135deg, #1a133e, #eb9aa0);
+    text-align: center;
+    position: sticky;
+    overflow: hidden;
+    width: 100%;
+    top: 0;
+}
+div.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+li.pendientes{
+    /*background-color: #8634eb; LA QUE TENIA ANTES DE TOCAR NADA*/
+    /*COLOR PREDOMINANTE FONDO: 	#8c3c71 */
+    /*background: linear-gradient(70deg, #1a133e, #eb9aa0); DEGRADADO OPCION 1*/
+    background: linear-gradient(135deg, #482057, #eb9aa0);
+    color:whitesmoke;
+    margin: 2%;
+    padding: 2.5%;
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #8c3c71;
+}
+
+li.completadas{
+    background-color: rgba(153, 138, 138, 0.692);
+    
+    color: black;
+    text-decoration: line-through;
+   /* flex-basis: 100%;*/
+    margin: 2%;
+    padding: 2.5%;
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+}
+ul.lista{
+    width: 60%;
+}
+span.tag{
+    color: whitesmoke;
+    padding: 1%;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 25%;
+    border-color: black;
+    background-color: #e98aa0; /* #3267c9;*/
+    font-size: small;
+    font-weight: bold;
+}
+a.marcar
+{
+    color: black;
+    font-family: 'Grandstander';
+    font-weight: bold;
+    border-color: #8c3c71;
+    border-width: 1px;
+    float: right;
+    padding: 0.4%;
+    background-color: #c92e91;
+}
+a.eliminar
+{
+    padding: 1.5%;
+    color: black;
+    font-family: 'Grandstander';
+    font-weight: bold;
+    font-size: large;
+    border-color: #b52b83;
+    border-width: 1px;
+    background-color: #c92e91;
+    margin: 1%;
+    margin-bottom: 3%;
+}
+a.eliminar:hover{
+    background-color: dimgray;
+    cursor: pointer;
+}
+a.eliminar:active{
+    color:dimgray
+}
+a.marcar:hover /*button*/{
+    background-color: dimgray;
+    cursor: pointer;
+}
+a.marcar:active /*button*/{
+    color:dimgray
+}
+div.buscador{
+    width: 54.5%;
+    background: linear-gradient(70deg, #482057, #eb9aa0);
+    color:whitesmoke;
+    margin: 1%;
+    padding: 1.5%;
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #8c3c71;
+}
+input.textfield{
+    padding: 2%;
+    width: 75%;
+    margin-right: 2%;
+
+}
+input.add{
+    padding: 2%;
+    color: black;
+    font-family: 'Grandstander';
+    font-weight: bold;
+    font-size: large;
+    border-color: #b52b83;
+    border-width: 1px;
+    background-color: #c92e91;
+    margin: 1%;
+    margin-bottom: 2%;
+}
+input.add:hover
+{
+    background-color: #8c3c71;
+    cursor: pointer;
+}
+input.add:active
+{
+    color:#8c3c71
+}
+a.desconectar{
+    color:whitesmoke
+}
+a.desconectar:hover{
+    color: #8c3c71;
+    cursor: pointer;
+}
+a.desconectar:active{
+    color:#8c3c71
+}
+
+div.form{
+    border-radius: 40px;
+    background: linear-gradient(135deg, #1a133e, #eb9aa0);
+    color:white;
+    padding: 5%;
+    margin-top:10%;
+    
+}
+div.form form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+div.form span{
+    display:block;
+}
+
+div.form .aceptar{
+    margin-top:10px;
+    width:100px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    border-radius: 40px;
+    cursor:pointer;
+}
+div.form form input.textfield{
+    margin:10px;
+    width: 300px;
+    border-radius: 40px;
+}
+span.err{
+    display: block;
+    COLOR:red;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
