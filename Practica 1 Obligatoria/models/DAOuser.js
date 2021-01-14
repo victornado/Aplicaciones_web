@@ -32,53 +32,6 @@ class DAOUsers {
         });
     }
 
-    getMVPTag(nick,callback){
-        this.pool.getConnection(function (err, connection) {
-            if (err) {
-                callback(new Error("Error de conexión a la base de datos"), null);
-            }
-            else {
-                connection.query("SELECT t.tag FROM question q RIGHT JOIN tags t ON q.id=t.IDquestion WHERE nick = ?",
-                    [nick],
-                    function (err, rows) {
-                        connection.release(); // devolver al pool la conexión
-                        if (err) {
-                            callback(new Error("Error de acceso a la base de datos"), null);
-                        }
-                        else {
-                            if (rows.length == 0) {
-                                callback(null, null); //no esta el usuario
-                            }
-                            else {
-                                let hashtag = new Map 
-                                rows.forEach(e => {
-                                    if(hashtag.has(e))
-                                    {
-                                        let n = hashtag.get(e) + 1;
-                                        hashtag.delete(e);
-                                        hashtag.set(e,n);
-                                    }
-                                    else{
-                                        hashtag.set(e,1);
-                                    }
-                                });
-                                let tag;
-                                let tmax = 0;
-                                hashtag.forEach(e => {
-                                    if(e.value > tmax)
-                                    {
-                                        tag= e.key;
-                                    }
-                                });
-                                callback(null, tag);
-                            }
-                        }
-                    });
-            }
-        });
-
-    }
-
     insertNewMember(email, password, nick, img, callback) {
         this.pool.getConnection(function (err, connection) {
             if (err) {
@@ -241,16 +194,77 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                connection.query("SELECT u.nick, u.icon, u.tag, s.reputation FROM users u join stats s on u.nick=s.nick",
+                connection.query("SELECT u.nick, u.icon, t.tag, s.reputation FROM users u join stats s on u.nick=s.nick left join question q on u.nick=q.nick left join tags t on t.idQuestion=q.id order by u.nick",
                     function (err, rows) {
                         connection.release(); // devolver al pool la conexión
                         if (err) {
                             callback(new Error("Error de acceso a la base de datos "));
                         }
                         else {
-                            
-                            
-                            callback(null, rows);
+                            let users = [];
+                            let aux = []
+                            let cont = 0;
+                            let nick = "";
+                            for (var i = 0; i < rows.length; i++) {
+                                if (rows[i].nick != nick) {//no esta 
+                                    nick = rows[i].nick;
+                                    if (aux.length > 0) {
+                                        let tag = "";
+                                        let max = 0;
+
+                                        for (let i1 = 0; i1 < aux.length; i1++) {
+                                            let contador = 0;
+                                            for (let j = 0; j < aux.length; j++) {
+                                                if (aux[j] == aux[i1]) {
+                                                    contador++;
+                                                    if (contador > max) {
+                                                        tag = aux[i1];
+                                                        max = contador;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        users[cont - 1].tag = tag;
+                                    }
+                                    aux = [];
+                                    let user = {
+                                        nick: "",
+                                        icon: "",
+                                        tag: "",
+                                        reputation: ""
+                                    };
+                                    user.nick = rows[i].nick;
+                                    user.icon = rows[i].icon;
+                                    user.reputation = rows[i].reputation;
+                                    if (rows[i].tag != null)
+                                        aux.push(rows[i].tag);
+                                    users[cont] = user;
+                                    cont++;
+                                }
+                                else {// si esta
+                                    if (rows[i].tag != null)
+                                        aux.push(rows[i].tag);
+                                }
+                            }
+                            if (aux.length > 0) {
+                                let tag = "";
+                                let max = 0;
+
+                                for (let i1 = 0; i1 < aux.length; i1++) {
+                                    let contador = 0;
+                                    for (let j = 0; j < aux.length; j++) {
+                                        if (aux[j] == aux[i1]) {
+                                            contador++;
+                                            if (contador > max) {
+                                                tag = aux[i1];
+                                                max = contador;
+                                            }
+                                        }
+                                    }
+                                }
+                                users[cont - 1].tag = tag;
+                            }
+                            callback(null, users);
                         }
 
                     });
@@ -265,7 +279,7 @@ class DAOUsers {
                 callback(new Error("Error de conexión a la base de datos"));
             }
             else {
-                connection.query("SELECT u.nick, u.icon, u.tag, s.reputation FROM users u join stats s on u.nick=s.nick where instr( u.nick , ? ) order by u.nick;",
+                connection.query("SELECT u.nick, u.icon, t.tag, s.reputation FROM users u join stats s on u.nick=s.nick left join question q on q.nick=u.nick left join tags t on q.id=t.idQuestion where instr( u.nick , ? ) order by u.nick;",
                     [text],
                     function (err, rows) {
                         connection.release(); // devolver al pool la conexión
@@ -273,7 +287,70 @@ class DAOUsers {
                             callback(new Error("Error de acceso a la base de datos "));
                         }
                         else {
-                            callback(null, rows);
+                            let users = [];
+                            let aux = []
+                            let cont = 0;
+                            let nick = "";
+                            for (var i = 0; i < rows.length; i++) {
+                                if (rows[i].nick != nick) {//no esta 
+                                    nick = rows[i].nick;
+                                    if (aux.length > 0) {
+                                        let tag = "";
+                                        let max = 0;
+
+                                        for (let i1 = 0; i1 < aux.length; i1++) {
+                                            let contador = 0;
+                                            for (let j = 0; j < aux.length; j++) {
+                                                if (aux[j] == aux[i1]) {
+                                                    contador++;
+                                                    if (contador > max) {
+                                                        tag = aux[i1];
+                                                        max = contador;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        users[cont - 1].tag = tag;
+                                    }
+                                    aux = [];
+                                    let user = {
+                                        nick: "",
+                                        icon: "",
+                                        tag: "",
+                                        reputation: ""
+                                    };
+                                    user.nick = rows[i].nick;
+                                    user.icon = rows[i].icon;
+                                    user.reputation = rows[i].reputation;
+                                    if (rows[i].tag != null)
+                                        aux.push(rows[i].tag);
+                                    users[cont] = user;
+                                    cont++;
+                                }
+                                else {// si esta
+                                    if (rows[i].tag != null)
+                                        aux.push(rows[i].tag);
+                                }
+                            }
+                            if (aux.length > 0) {
+                                let tag = "";
+                                let max = 0;
+
+                                for (let i1 = 0; i1 < aux.length; i1++) {
+                                    let contador = 0;
+                                    for (let j = 0; j < aux.length; j++) {
+                                        if (aux[j] == aux[i1]) {
+                                            contador++;
+                                            if (contador > max) {
+                                                tag = aux[i1];
+                                                max = contador;
+                                            }
+                                        }
+                                    }
+                                }
+                                users[cont - 1].tag = tag;
+                            }
+                            callback(null, users);
                         }
                     });
             }

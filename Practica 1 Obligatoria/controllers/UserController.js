@@ -130,23 +130,7 @@ class UserController {
             else {
                 response.status(200);
                 userslist = content;
-                let i=0;
-                userslist.forEach(user => {
-                    daoU.getMVPTag(user.nick , function(err, daotag){
-                        if(err)
-                        {
-                            response.status(500);
-                        }
-                        else
-                        {
-                            response.status(200);
-                            user.tag=daotag;
-                        }
-                        i++;
-                    })
-                });
-                if(i==userslist.length)
-                    response.render("allUsers", { userslist });
+                response.render("allUsers", { userslist });
             }
         });
     }
