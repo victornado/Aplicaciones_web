@@ -11,7 +11,7 @@
     <span class="titulo">404</span>
   
        
-        <form action="/loginForm" class="loginPanel" method="POST">
+        <form action="/usuarios/loginForm" class="loginPanel" method="POST">
             <span class="type">LOGIN</span>
             <div class="barras">
                 <span>Correo electrónico:*</span>
@@ -22,7 +22,7 @@
                 <input type="password" name="pass" placeholder="password">
             </div>
             <div class="botones">
-                <a href="/register">Register</a>
+                <a href="/usuarios/register">Register</a>
                 <button type="submit" value="Login">Login</button>
             </div>
             <% if(errorMsg!=null) { %>

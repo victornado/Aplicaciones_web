@@ -17,20 +17,20 @@
         <div class="cabecera">
             <span class="titulo"> 404 </span>
                 <ul class="usuario"> 
-                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us"><img src=/usuarios/imgLogUser alt=""></li>
                     <li class="us">
-                        <a href=<%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                        <a href=<%= "/usuarios/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
                     </li>
-                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                    <li class="su"> <a class="cerrarssesion" href="/usuarios/logout">Cerrar sesion</a> </li>
                 </ul>
         </div>
      <div class="menu">
         <ul class="men">
-            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
-            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
-            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> <a href="/preguntas/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/preguntas/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/usuarios/allUsers" class="menu">Usuarios</a></li>
             <li class="menu"> 
-                <form action="/SBText" class="SBTextf" method="POST">
+                <form action="/preguntas/SBText" class="SBTextf" method="POST">
                     <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
                     <button type="submit" value="SBText" class="buscador">
                         Buscar
@@ -46,7 +46,7 @@
             <div class="tit"><h1>Filtrado por el tag: <%= questList.filter %> </h1></div>
             <div class="opt">
                 <span class="preg"> <%= questList.length %> Preguntas</span>
-                <a href="/createQuestion" class="btn">Formular pregunta</a>
+                <a href="/preguntas/createQuestion" class="btn">Formular pregunta</a>
             </div>
             <% if(questList!=undefined && questList.length>0   ){ %>
                 <% questList.forEach(function(quest){ %>
@@ -55,12 +55,12 @@
 
                         <div class="post">
                             <div class="postinfo">
-                                <a href= <%= "/OneQuestion/" +  quest.id %> class="title"> <%= quest.title %> </a>
+                                <a href= <%= "/preguntas/OneQuestion/" +  quest.id %> class="title"> <%= quest.title %> </a>
                                 <span class="desc">  <%= quest.text %>  </span>
                                 <div class="tags">
                                     <% quest.tags.forEach(function(tag){ %>
                                         <% if(tag!= null) { %>
-                                            <a href= <%= "/SBTag/" + tag %> class="tag"><%= tag %></a> 
+                                            <a href= <%= "/preguntas/SBTag/" + tag %> class="tag"><%= tag %></a> 
                                         <% } %>
                                     <% }); %>
                                 </div>
@@ -70,8 +70,8 @@
                                 <% if(quest.icon == "") { %>
                                     <% quest.icon="NoPerfil.jpg" %>
                                 <% } %>
-                                <img src= <%= "/imagenUsuarios/" + quest.icon %> alt="" class="user"> 
-                                <a href= <%="/profile/" + quest.nick %> class="nick"><%= quest.nick %></a>
+                                <img src= <%= "/preguntas/imagenUsuarios/" + quest.icon %> alt="" class="user"> 
+                                <a href= <%="/usuarios/profile/" + quest.nick %> class="nick"><%= quest.nick %></a>
                             </div>
         
                             <div class="separador"></div>

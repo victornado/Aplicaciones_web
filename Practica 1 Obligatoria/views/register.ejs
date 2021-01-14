@@ -12,7 +12,7 @@
         <span class="titulo">404</span>
     </header>
     <div>
-        <form action="registerForm" class="loginPanel" method="POST">
+        <form action="/usuarios/registerForm" class="loginPanel" method="POST" enctype="multipart/form-data">
             <span class="type">REGISTER</span>
             <div class="barras">
                 <span>Email:*</span>
@@ -36,11 +36,11 @@
             <div class="barras">
                 <span>Profile picture:</span>
                 <span class="detalle">The image will be shown to the rest of the users</span>
-                <input class="img" type="file" name="img" accept="image/png, image/jpeg" id="">
+                <input class="img" type="file" name="img" accept="image/png, image/jpeg, image/jpg">
             </div>
             <div class="botones">
-                <button type="submit" value="/registerForm">Create account</button>
-                <a href="/login">Login</a>
+                <button type="submit" value="registerForm">Create account</button>
+                <a href="/usuarios/login">Login</a>
             </div>
 
             <% if(errorMsg==1) { %>
@@ -51,6 +51,11 @@
             <% if(errorMsg==2) { %>
                 <div class="error">
                     <span class="regOk"> Se ha registrado correctamente. Presione "Login" e inicie sesion </span>
+                </div>
+            <% } %>
+            <% if(errorMsg==3) { %>
+                <div class="error">
+                    <span class="regOk"> las contraseñas no coinciden </span>
                 </div>
             <% } %>
         </form>

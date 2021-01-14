@@ -13,20 +13,20 @@
         <div class="cabecera">
             <span class="titulo"> 404 </span>
                 <ul class="usuario"> 
-                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us"><img src=/usuarios/imgLogUser alt=""></li>
                     <li class="us">
-                        <a href=<%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                        <a href=<%= "/usuarios/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
                     </li>
-                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                    <li class="su"> <a class="cerrarssesion" href="/usuarios/logout">Cerrar sesion</a> </li>
                 </ul>
         </div>
      <div class="menu">
         <ul class="men">
-            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
-            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
-            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> <a href="/preguntas/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/preguntas/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/usuarios/allUsers" class="menu">Usuarios</a></li>
             <li class="menu"> 
-                <form action="/SBText" class="SBTextf" method="POST">
+                <form action="/preguntas/SBText" class="SBTextf" method="POST">
                     <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
                     <button type="submit" value="SBText" class="buscador">
                         Buscar
@@ -39,7 +39,7 @@
 
     <div class="body">
 
-        <form action="/UserFilter" class="search" method="POST"> 
+        <form action="/usuarios/UserFilter" class="search" method="POST"> 
             <input class="barra-texto" type="text" name="userF" placeholder="Filtrar usuario">
             <button type="submit" value="UserFilter" class="buscador">
                 filtrar
@@ -51,13 +51,13 @@
                 <% userslist.forEach(function(user){ %>
 
                 <div class="userBox">
-                    <% if(quest.icon == "") { %>
-                        <% quest.icon="NoPerfil.jpg" %>
+                    <% if(user.icon == "") { %>
+                        <% user.icon="NoPerfil.jpg" %>
                     <% } %>
-                <img src= <%= "/imagenUsuarios/" + user.icon %> alt="">
-                <a href= <%="/profile/" + user.nick %> > <%= user.nick %> </a>
+                <img src= <%= "/preguntas/imagenUsuarios/" + user.icon %> alt="">
+                <a href= <%="/usuarios/profile/" + user.nick %> > <%= user.nick %> </a>
                 <span class="score"> <%= user.reputation %> </span>
-                <a href=<%= "/SBTag/" + user.tag %> class="tag"> <%= user.tag %> </a>
+                <a href=<%= "/preguntas/SBTag/" + user.tag %> class="tag"> <%= user.tag %> </a>
                 </div>
 
                 <% }); %>

@@ -17,20 +17,20 @@
         <div class="cabecera">
             <span class="titulo"> 404 </span>
                 <ul class="usuario"> 
-                    <li class="us"><img src=/imgLogUser alt=""></li>
+                    <li class="us"><img src=/usuarios/imgLogUser alt=""></li>
                     <li class="us">
-                        <a href= <%= "/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
+                        <a href= <%= "/usuarios/profile/" + locals.nick %> class="nick"><%= locals.nick  %></a>
                     </li>
-                    <li class="su"> <a class="cerrarssesion" href="/logout">Cerrar sesion</a> </li>
+                    <li class="su"> <a class="cerrarssesion" href="/usuarios/logout">Cerrar sesion</a> </li>
                 </ul>
         </div>
      <div class="menu">
         <ul class="men">
-            <li class="menu"> <a href="/AllQuestions" class="menu">Preguntas</a></li>
-            <li class="menu"> <a href="/sinRespuesta" class="menu">Sin responder</a></li>
-            <li class="menu"> <a href="/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> <a href="/preguntas/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/preguntas/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/usuarios/allUsers" class="menu">Usuarios</a></li>
             <li class="menu"> 
-                <form action="/SBText" class="SBTextf" method="POST">
+                <form action="/preguntas/SBText" class="SBTextf" method="POST">
                     <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
                     <button type="submit" value="SBText" class="buscador">
                         Buscar
@@ -47,7 +47,7 @@
                     <% if(userInfo.icon == "") { %>
                         <% userInfo.icon="NoPerfil.jpg" %>
                     <% } %>
-                    <img src= <%= "/imagenUsuarios/" + userInfo.icon %> alt="">
+                    <img src= <%= "/preguntas/imagenUsuarios/" + userInfo.icon %> alt="">
                     <span class="username"><%= userInfo.nick %></span>
                     <span>miembro desde <span class="date"><%= userInfo.date %></span></span> 
                     </div>
@@ -117,40 +117,7 @@
                             </ul>
                             
                         </div>
-                    </div>
-                
-                <% if (userInfo.medals.length == 0) {%>
-                    <div class="medalType">
-                        
-                        <div class="bronze">
-                            <span>Bronce<span>0</span></span>
-                            
-                            <ul>
-                            
-                            </ul>
-                        </div>
-    
-                        <div class="silver">
-                            <span>Plata <span>0</span> </span>
-                            
-                            <ul>
-                                
-                            </ul>
-                        </div>
-    
-                        <div class="gold">
-                            <span>Oro<span>0</span></span>
-                            
-                            <ul>
-                                
-                            </ul>
-                        </div>
-    
-                    </div>
-                <% } %>
-                    
-                
-                
+                    </div>               
             </div>
         </div>
 </body>

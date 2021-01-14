@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Practica 1</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/header.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/AllQuestions.css'>
+    <link rel="icon" type="img/png" href="images/favicon.png"> 
+</head>
+
+<body>
+    <header>
+        <div class="cabecera">
+            <span class="titulo"> 404 </span>
+                <ul class="usuario"> 
+                    <li class="us"><img src=/usuarios/imgLogUser alt=""></li>
+                    <li class="us">
+                        <a href=<%= "/usuarios/profile/" + user %> class="nick"><%= user  %></a>
+                    </li>
+                    <li class="su"> <a class="cerrarssesion" href="/usuarios/logout">Cerrar sesion</a> </li>
+                </ul>
+        </div>
+     <div class="menu">
+        <ul class="men">
+            <li class="menu"> <a href="/preguntas/AllQuestions" class="menu">Preguntas</a></li>
+            <li class="menu"> <a href="/preguntas/sinRespuesta" class="menu">Sin responder</a></li>
+            <li class="menu"> <a href="/usuarios/allUsers" class="menu">Usuarios</a></li>
+            <li class="menu"> 
+                <form action="/preguntas/SBText" class="SBTextf" method="POST">
+                    <input class="barra-texto" type="text" name="textForm" placeholder="Introduce el texto que quieras buscar">
+                    <button type="submit" value="SBText" class="buscador">
+                        Buscar
+                    </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    </header>
+</body>
